@@ -1,0 +1,6 @@
+---
+- name: Install and configure httpd using Role
+  hosts: all
+  become: yes
+  roles:
+    - webserver

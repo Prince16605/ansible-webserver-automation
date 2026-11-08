@@ -1,0 +1,17 @@
+---
+- name: Install httpd package
+  yum:
+    name: "{{ package_name }}"
+    state: present
+
+- name: Start and enable httpd service
+  service:
+    name: "{{ service_name }}"
+    state: started
+    enabled: yes
+
+- name: Deploy static index.html page
+  copy:
+    src: index.html
+    dest: "{{ web_root }}/index.html"
+  notify: Restart httpd
